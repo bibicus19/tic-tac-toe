@@ -1,0 +1,41 @@
+cells = input("Enter cells: > ")
+start_end = "---------"
+row1 = cells[0:3]
+row2 = cells[3:6]
+row3 = cells[6:9]
+column1 = cells[0:7:3]
+column2 = cells[1:8:3]
+column3 = cells[2:9:3]
+diagonal1 = cells[0:9:4]
+diagonal2 = cells[2:7:2]
+cells_count_x = cells.count("X") - cells.count("O")
+cells_count_o = cells.count("O") - cells.count("X")
+game = [row1, row2, row3, column1, column2, column3, diagonal1, diagonal2]
+x_win = "XXX"
+o_win = "OOO"
+print(start_end)
+print("| " + cells[0] + " " + cells[1] + " " + cells[2] + " |")
+print("| " + cells[3] + " " + cells[4] + " " + cells[5] + " |")
+print("| " + cells[6] + " " + cells[7] + " " + cells[8] + " |")
+print(start_end)
+if x_win in game and o_win not in game:
+    print("X wins")
+elif o_win in game and x_win not in game:
+    print("O wins")
+elif o_win and x_win in game:
+    print("Impossible")
+elif x_win and o_win not in game:
+    if "_" not in cells:
+        if cells_count_x >= 2:
+            print("Impossible")
+        elif cells_count_o >= 2:
+            print("Impossible")
+        else:
+            print("Draw")
+    elif "_" in cells:
+        if cells_count_x >= 2:
+            print("Impossible")
+        elif cells_count_o >= 2:
+            print("Impossible")
+        else:
+            print("Game not finished")
